@@ -3,6 +3,7 @@ package gov.nih.nci.ecm.mock.ejb.service;
 import gov.nih.nci.common.exceptions.CTEPEntException;
 import gov.nih.nci.coppa.services.PersonService;
 import gov.nih.nci.ecm.mock.util.JsonMapper;
+import gov.nih.nci.iso21090.EnPn;
 import gov.nih.nci.iso21090.Ii;
 import gov.nih.nci.services.correlation.ClinicalResearchStaffDTO;
 import gov.nih.nci.services.correlation.HealthCareProviderDTO;
@@ -33,7 +34,10 @@ public class PersonServiceBean implements PersonService {
         String json = null;
         try {
             json = IOUtils.toString(new FileInputStream(dataDir + "/person/" + id + ".json"));
-            return mapper.convertToObject(json, PersonDTO.class);
+            PersonDTO dto = mapper.convertToObject(json, PersonDTO.class);
+            EnPn name = dto.getName().clone();
+            dto.setName(name);
+            return dto;
         } catch (Exception e) {
             throw new CTEPEntException(1, e.getMessage());
         }

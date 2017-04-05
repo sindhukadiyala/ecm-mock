@@ -4,6 +4,7 @@ import gov.nih.nci.common.exceptions.CTEPEntException;
 import gov.nih.nci.coppa.domain.Organization;
 import gov.nih.nci.coppa.services.*;
 import gov.nih.nci.ecm.mock.util.JsonMapper;
+import gov.nih.nci.iso21090.EnOn;
 import gov.nih.nci.iso21090.Ii;
 import gov.nih.nci.services.correlation.HealthCareFacilityDTO;
 import gov.nih.nci.services.correlation.ResearchOrganizationDTO;
@@ -33,7 +34,10 @@ public class OrganizationServiceBean implements OrganizationService {
         String json = null;
         try {
             json =IOUtils.toString(new FileInputStream(dataDir + "/org/" + id + ".json"));
-            return mapper.convertToObject(json, OrganizationDTO.class);
+            OrganizationDTO dto = mapper.convertToObject(json, OrganizationDTO.class);
+            EnOn name = dto.getName().clone();
+            dto.setName(name);
+            return dto;
         } catch (Exception e) {
             throw new CTEPEntException(1, e.getMessage());
         }
@@ -55,7 +59,10 @@ public class OrganizationServiceBean implements OrganizationService {
         String json = null;
         try {
             json =IOUtils.toString(new FileInputStream(dataDir + "/hcf/" + id + ".json"));
-            return mapper.convertToObject(json, HealthCareFacilityDTO.class);
+            HealthCareFacilityDTO dto = mapper.convertToObject(json, HealthCareFacilityDTO.class);
+            EnOn name = dto.getName().clone();
+            dto.setName(name);
+            return dto;
         } catch (Exception e) {
             throw new CTEPEntException(1, e.getMessage());
         }
@@ -67,7 +74,10 @@ public class OrganizationServiceBean implements OrganizationService {
         String json = null;
         try {
             json =IOUtils.toString(new FileInputStream(dataDir + "/resorg/" + id + ".json"));
-            return mapper.convertToObject(json, ResearchOrganizationDTO.class);
+            ResearchOrganizationDTO dto = mapper.convertToObject(json, ResearchOrganizationDTO.class);
+            EnOn name = dto.getName().clone();
+            dto.setName(name);
+            return dto;
         } catch (Exception e) {
             throw new CTEPEntException(1, e.getMessage());
         }
