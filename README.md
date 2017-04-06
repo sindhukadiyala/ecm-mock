@@ -34,3 +34,10 @@ Build and Deploy ecm-mock
 11. Add to JAVA_OPTS, -DECM_MOCK_DATA_DIR=<ECM_MOCK_DATA_DIR>
 12. To start Jboss, run, 
 <JBOSS_HOME>/bin/standalone.sh
+
+Validate ECM Mock App is up
+---------------------------
+
+1. Hit the following url to get the build info (TODO: Right now, hardcoded info to be replaced with build or env specific info),
+
+http://<server-host-name>:39680/ecm-webservices/services/build-service/build
