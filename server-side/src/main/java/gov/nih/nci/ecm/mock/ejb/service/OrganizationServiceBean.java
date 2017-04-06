@@ -19,7 +19,7 @@ import java.util.List;
 /**
  * Created by vinodh on 4/4/17.
  */
-@Stateless
+@Stateless(name = "OrganizationService")
 @Remote(OrganizationService.class)
 public class OrganizationServiceBean implements OrganizationService {
 
