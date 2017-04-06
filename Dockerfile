@@ -45,7 +45,7 @@ RUN mkdir -p /opt/jboss/mock_data/hcp-player/
 RUN mkdir -p /opt/jboss/mock_data/hcp-role/
 RUN mkdir -p /opt/jboss/mock_data/idp/
 
-COPY ./server-config/standalone.xm "$JBOSS_HOME/standalone/configuration/""
+COPY ./server-config/standalone.xml "$JBOSS_HOME/standalone/configuration/"
 
 EXPOSE 39680
 
