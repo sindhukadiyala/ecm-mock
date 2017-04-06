@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+
+		http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd">
+
+	<context:annotation-config/>
+	<context:component-scan base-package="gov.nih.nci.ecm.mock.rest.service" />
+
+    <import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
+	<import resource="classpath:META-INF/cxf/cxf.xml" />
+
+    <bean id="jsonProvider" class="org.codehaus.jackson.jaxrs.JacksonJaxbJsonProvider"/>
+
+    <bean id="exceptionAdvice" class="gov.nih.nci.ecm.mock.rest.aop.ExceptionHandlerAdvice" />
+
+	<!-- Build REST Service Configurations -->
+    <jaxrs:server id="buildRESTService" address="/build-service">
+        <jaxrs:serviceBeans>
+            <ref bean="buildServiceSimpleRestEndpoint" />
+        </jaxrs:serviceBeans>
+        <jaxrs:providers>
+            <ref bean='jsonProvider' />
+        </jaxrs:providers>
+    </jaxrs:server>
+
+    <!-- Exception Handler for BuildServiceImpl-->
+	<bean id="buildServiceProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="proxyInterfaces"
+			value="gov.nih.nci.ecm.mock.rest.service.BuildService" />
+		<property name="interceptorNames">
+			<list>
+				<value>exceptionAdvice</value>
+			</list>
+		</property>
+		<property name="target">
+			<ref bean="simpleBuildService" />
+		</property>
+	</bean>
+
+</beans>

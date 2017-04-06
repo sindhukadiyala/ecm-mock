@@ -31,7 +31,7 @@ public class JsonMapper {
         OrganizationDTO dto = null;
         try {
             json = IOUtils.toString(new FileInputStream("/Users/vinodh/sb/projects/ctrp-modern/ejb-remote/data/org/"
-                    + "123.json"));
+                    + "FL388.json"));
             dto = jm.convertToObject(json, OrganizationDTO.class);
         } catch (Exception e) {
             throw new CTEPEntException(1, e.getMessage());

@@ -90,7 +90,7 @@ public class RemoteEJBClient {
         System.out.println("Obtained a remote stateless OrganizationService for invocation");
 
         Ii ii = new Ii();
-        ii.setExtension("123");
+        ii.setExtension("FL388");
         OrganizationDTO org = orgSvc.getOrganizationById(ii);
         System.out.println(org.getIdentifier() + " " + org.getName());
     }

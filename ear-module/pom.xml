@@ -14,6 +14,8 @@
     <artifactId>ecm-mock-ear</artifactId>
     <packaging>ear</packaging>
 
+    <name>ECM Mock Service - Ear</name>
+
     <dependencies>
         <!-- ejb modules -->
         <dependency>
@@ -21,6 +23,13 @@
             <artifactId>ecm-mock-server</artifactId>
             <version>1.0-SNAPSHOT</version>
             <type>ejb</type>
+        </dependency>
+
+        <dependency>
+            <groupId>gov.nih.nci.ecm.mock</groupId>
+            <artifactId>ecm-webservices</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <type>war</type>
         </dependency>
     </dependencies>
 
@@ -32,7 +41,14 @@
                 <configuration>
                     <defaultLibBundleDir>lib</defaultLibBundleDir>
                     <finalName>ecm-mock</finalName>
+                    <earSourceDirectory>target/classes</earSourceDirectory>
                     <modules>
+                        <webModule>
+                            <groupId>${project.parent.groupId}</groupId>
+                            <artifactId>ecm-webservices</artifactId>
+                            <contextRoot>/ecm-webservices</contextRoot>
+                            <bundleFileName>ecm-webservices.war</bundleFileName>
+                        </webModule>
                         <jarModule>
                             <groupId>gov.nih.nci.iso21090</groupId>
                             <artifactId>iso-datatypes</artifactId>
@@ -365,17 +381,6 @@
                         </jarModule>
 
                     </modules>
-                    <!--<security>-->
-                        <!--<security-role id="client">-->
-                            <!--<role-name>client</role-name>-->
-                        <!--</security-role>-->
-                        <!--<security-role id="Curator">-->
-                            <!--<role-name>Curator</role-name>-->
-                        <!--</security-role>-->
-                        <!--<security-role id="SecurityAdmin">-->
-                            <!--<role-name>SecurityAdmin</role-name>-->
-                        <!--</security-role>-->
-                    <!--</security>-->
                 </configuration>
             </plugin>
         </plugins>
