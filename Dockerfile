@@ -12,6 +12,8 @@ MAINTAINER Radu Robotin <radu.robotin@nih.gov>
 RUN groupadd -r jboss -g 1000 && useradd -u 1000 -r -g jboss -m -d /opt/jboss -s /sbin/nologin -c "JBoss user" jboss && \
     chmod 755 /opt/jboss
 
+
+
 # Set the working directory to jboss' user home directory
 WORKDIR /opt/jboss
 
@@ -28,6 +30,7 @@ RUN ln -s /opt/jboss /opt/jboss-eap-6.2
 #ENV JAVA_HOME /usr/lib/jvm/java
 ENV EAP_HOME /opt/jboss/jboss-eap-6.2
 ENV JBOSS_HOME /opt/jboss/jboss-eap-6.2
+ENV LOGLEVEL INFO
 
 COPY . /usr/src/app
 WORKDIR /usr/src/app
@@ -42,14 +45,8 @@ RUN mkdir -p /opt/jboss/mock_data/hcp-player/
 RUN mkdir -p /opt/jboss/mock_data/hcp-role/
 RUN mkdir -p /opt/jboss/mock_data/idp/
 
+COPY ./server-config/standalone.xm "$JBOSS_HOME/standalone/configuration/""
 
-
-# ADD Environment specific properties files
-#COPY ctrp.inttest.properties    $JBOSS_HOME/ctrp/ctrp.inttest.properties
-#COPY ctrp.inttest2.properties    $JBOSS_HOME/ctrp/ctrp.inttest2.properties
-#COPY ctrp.uat.properties        $JBOSS_HOME/ctrp/ctrp.uat.properties
-#COPY ctrp.production.properties $JBOSS_HOME/ctrp/ctrp.production.properties
-
-EXPOSE 4447
+EXPOSE 39680
 
 CMD $JBOSS_HOME/bin/standalone.sh
