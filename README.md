@@ -31,8 +31,10 @@ Build and Deploy ecm-mock
 8. Download Jboss 6 EAP from https://s3.amazonaws.com/ctrp-repos/Installs/jboss-eap-6.2.0.zip
 9. Unzip to <JBOSS_HOME> dir
 10. Edit <JBOSS_HOME>/bin/standalone.conf or <JBOSS_HOME>/bin/standalone.sh
-11. Add to JAVA_OPTS, -DECM_MOCK_DATA_DIR=<ECM_MOCK_DATA_DIR>
-12. To start Jboss, run, 
+11. Copy <ECM_MOCK_HOME>/server-config/standalone.xml to <JBOSS_HOME>/standalone/configuration/
+12. Set environment variable, LOGLEVEL=INFO
+13. Add to JAVA_OPTS, -DECM_MOCK_DATA_DIR=<ECM_MOCK_DATA_DIR>
+14. To start Jboss, run, 
 <JBOSS_HOME>/bin/standalone.sh
 
 Validate ECM Mock App is up
