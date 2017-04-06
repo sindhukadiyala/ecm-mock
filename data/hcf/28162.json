@@ -1,0 +1,92 @@
+{
+    "identifier": {
+        "item": [
+            {
+                "nullFlavor": null,
+                "displayable": true,
+                "extension": "38563296",
+                "identifierName": "NCI health care facility identifier",
+                "reliability": "ISS",
+                "root": "2.16.840.1.113883.3.26.4.4.3",
+                "scope": "OBJ"
+            },
+            {
+                "nullFlavor": null,
+                "displayable": true,
+                "extension": "28162",
+                "identifierName": "Cancer Therapy Evaluation Program Organization Identifier",
+                "reliability": "ISS",
+                "root": "2.16.840.1.113883.3.26.6.2",
+                "scope": "OBJ"
+            }
+        ]
+    },
+    "telecomAddress": {
+        "item": []
+    },
+    "duplicateOf": null,
+    "status": {
+        "nullFlavor": null,
+        "code": "active",
+        "codeSystem": null,
+        "codeSystemName": null,
+        "codeSystemVersion": null,
+        "displayName": null,
+        "originalText": null
+    },
+    "postalAddress": {
+        "item": [
+            {
+                "nullFlavor": null,
+                "part": [
+                    {
+                        "code": null,
+                        "codeSystem": null,
+                        "value": "28 Boulevard Du 8 Mai 1945",
+                        "type": "AL"
+                    },
+                    {
+                        "code": null,
+                        "codeSystem": null,
+                        "value": "Tarbes",
+                        "type": "CTY"
+                    },
+                    {
+                        "code": null,
+                        "codeSystem": null,
+                        "value": "65000",
+                        "type": "ZIP"
+                    },
+                    {
+                        "code": "FR ",
+                        "codeSystem": "ISO 3166-1 alpha-2",
+                        "value": "France",
+                        "type": "CNT"
+                    }
+                ]
+            }
+        ]
+    },
+    "name": {
+        "nullFlavor": null,
+        "part": [
+            {
+                "code": null,
+                "codeSystem": null,
+                "codeSystemVersion": null,
+                "qualifier": null,
+                "type": null,
+                "value": "Polyclinique de l'Ormeau"
+            }
+        ]
+    },
+    "playerIdentifier": {
+        "nullFlavor": null,
+        "displayable": true,
+        "extension": "38563282",
+        "identifierName": "NCI organization entity identifier",
+        "reliability": "ISS",
+        "root": "2.16.840.1.113883.3.26.4.2",
+        "scope": "OBJ"
+    }
+}

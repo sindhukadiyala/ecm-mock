@@ -1,0 +1,111 @@
+{
+    "name": {
+        "nullFlavor": null,
+        "part": [
+            {
+                "code": null,
+                "codeSystem": null,
+                "codeSystemVersion": null,
+                "qualifier": null,
+                "type": "FAM",
+                "value": "Ageton"
+            },
+            {
+                "code": null,
+                "codeSystem": null,
+                "codeSystemVersion": null,
+                "qualifier": null,
+                "type": "GIV",
+                "value": "Cheryl"
+            },
+            {
+                "code": null,
+                "codeSystem": null,
+                "codeSystemVersion": null,
+                "qualifier": null,
+                "type": "PFX",
+                "value": "Ms."
+            }
+        ]
+    },
+    "telecomAddress": {
+        "item": [
+            {
+                "nullFlavor": null,
+                "value": "mailto:cheryl.ageton@CTIS1avera.org"
+            },
+            {
+                "nullFlavor": null,
+                "value": "x-text-fax:(605)-322-3299"
+            },
+            {
+                "nullFlavor": null,
+                "value": "tel:(605)-322-3095"
+            }
+        ]
+    },
+    "statusCode": {
+        "nullFlavor": null,
+        "code": "active",
+        "codeSystem": null,
+        "codeSystemName": null,
+        "codeSystemVersion": null,
+        "displayName": null,
+        "originalText": null
+    },
+    "ethnicGroupCode": null,
+    "identifier": {
+        "nullFlavor": null,
+        "displayable": true,
+        "extension": "513057",
+        "identifierName": "Cancer Therapy Evaluation Program Person Identifier",
+        "reliability": "ISS",
+        "root": "2.16.840.1.113883.3.26.6.1",
+        "scope": "OBJ"
+    },
+    "postalAddress": {
+        "nullFlavor": null,
+        "part": [
+            {
+                "code": null,
+                "codeSystem": null,
+                "value": "1000 East 23rd Street",
+                "type": "AL"
+            },
+            {
+                "code": null,
+                "codeSystem": null,
+                "value": "Suite 320",
+                "type": "ADL"
+            },
+            {
+                "code": null,
+                "codeSystem": null,
+                "value": "Sioux Falls",
+                "type": "CTY"
+            },
+            {
+                "code": null,
+                "codeSystem": null,
+                "value": "57105",
+                "type": "ZIP"
+            },
+            {
+                "code": "SD ",
+                "codeSystem": null,
+                "value": "South Dakota",
+                "type": "STA"
+            },
+            {
+                "code": "US ",
+                "codeSystem": "ISO 3166-1 alpha-2",
+                "value": "USA",
+                "type": "CNT"
+            }
+        ]
+    },
+    "sexCode": null,
+    "statusDate": null,
+    "raceCode": null,
+    "birthDate": null
+}

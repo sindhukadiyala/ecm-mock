@@ -1,0 +1,104 @@
+{
+    "identifier": {
+        "item": [
+            {
+                "nullFlavor": null,
+                "displayable": true,
+                "extension": "2046346",
+                "identifierName": "CTEP Clinical Research Staff Person Identifier",
+                "reliability": "ISS",
+                "root": "2.16.840.1.113883.3.26.6.1.2",
+                "scope": "OBJ"
+            }
+        ]
+    },
+    "telecomAddress": {
+        "item": [
+            {
+                "nullFlavor": null,
+                "value": "mailto:shawm@CTIS1mskcc.org"
+            },
+            {
+                "nullFlavor": null,
+                "value": "x-text-fax:646-735-0011"
+            },
+            {
+                "nullFlavor": null,
+                "value": "tel:646-735-8086"
+            }
+        ]
+    },
+    "duplicateOf": null,
+    "status": {
+        "nullFlavor": null,
+        "code": "active",
+        "codeSystem": null,
+        "codeSystemName": null,
+        "codeSystemVersion": null,
+        "displayName": null,
+        "originalText": null
+    },
+    "playerIdentifier": {
+        "nullFlavor": null,
+        "displayable": true,
+        "extension": "526082",
+        "identifierName": "Cancer Therapy Evaluation Program Person Identifier",
+        "reliability": "ISS",
+        "root": "2.16.840.1.113883.3.26.6.1",
+        "scope": "OBJ"
+    },
+    "scoperIdentifier": {
+        "nullFlavor": null,
+        "displayable": true,
+        "extension": "NY016",
+        "identifierName": "Cancer Therapy Evaluation Program Organization Identifier",
+        "reliability": "ISS",
+        "root": "2.16.840.1.113883.3.26.6.2",
+        "scope": "OBJ"
+    },
+    "postalAddress": {
+        "item": [
+            {
+                "nullFlavor": null,
+                "part": [
+                    {
+                        "code": null,
+                        "codeSystem": null,
+                        "value": "307 East 63rd Street",
+                        "type": "AL"
+                    },
+                    {
+                        "code": null,
+                        "codeSystem": null,
+                        "value": "Second Floor",
+                        "type": "ADL"
+                    },
+                    {
+                        "code": null,
+                        "codeSystem": null,
+                        "value": "New York",
+                        "type": "CTY"
+                    },
+                    {
+                        "code": null,
+                        "codeSystem": null,
+                        "value": "10065",
+                        "type": "ZIP"
+                    },
+                    {
+                        "code": "NY ",
+                        "codeSystem": null,
+                        "value": "New York",
+                        "type": "STA"
+                    },
+                    {
+                        "code": "US ",
+                        "codeSystem": "ISO 3166-1 alpha-2",
+                        "value": "USA",
+                        "type": "CNT"
+                    }
+                ]
+            }
+        ]
+    }
+}

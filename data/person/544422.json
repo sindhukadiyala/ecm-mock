@@ -1,0 +1,113 @@
+{
+    "name": {
+        "nullFlavor": null,
+        "part": [
+            {
+                "code": null,
+                "codeSystem": null,
+                "codeSystemVersion": null,
+                "qualifier": null,
+                "type": "FAM",
+                "value": "Valdez"
+            },
+            {
+                "code": null,
+                "codeSystem": null,
+                "codeSystemVersion": null,
+                "qualifier": null,
+                "type": "GIV",
+                "value": "Ronald"
+            },
+            {
+                "code": null,
+                "codeSystem": null,
+                "codeSystemVersion": null,
+                "qualifier": null,
+                "type": "GIV",
+                "value": "G."
+            },
+            {
+                "code": null,
+                "codeSystem": null,
+                "codeSystemVersion": null,
+                "qualifier": null,
+                "type": "PFX",
+                "value": "Mr."
+            }
+        ]
+    },
+    "telecomAddress": {
+        "item": [
+            {
+                "nullFlavor": null,
+                "value": "mailto:Ronald.Valdez@CTIS1cshs.org"
+            },
+            {
+                "nullFlavor": null,
+                "value": "x-text-fax:(310)-423-7182"
+            },
+            {
+                "nullFlavor": null,
+                "value": "tel:(310)-423-4849"
+            }
+        ]
+    },
+    "statusCode": {
+        "nullFlavor": null,
+        "code": "active",
+        "codeSystem": null,
+        "codeSystemName": null,
+        "codeSystemVersion": null,
+        "displayName": null,
+        "originalText": null
+    },
+    "ethnicGroupCode": null,
+    "identifier": {
+        "nullFlavor": null,
+        "displayable": true,
+        "extension": "544422",
+        "identifierName": "Cancer Therapy Evaluation Program Person Identifier",
+        "reliability": "ISS",
+        "root": "2.16.840.1.113883.3.26.6.1",
+        "scope": "OBJ"
+    },
+    "postalAddress": {
+        "nullFlavor": null,
+        "part": [
+            {
+                "code": null,
+                "codeSystem": null,
+                "value": "8700 Beverly Boulevard",
+                "type": "AL"
+            },
+            {
+                "code": null,
+                "codeSystem": null,
+                "value": "Los Angeles",
+                "type": "CTY"
+            },
+            {
+                "code": null,
+                "codeSystem": null,
+                "value": "90048",
+                "type": "ZIP"
+            },
+            {
+                "code": "CA ",
+                "codeSystem": null,
+                "value": "California",
+                "type": "STA"
+            },
+            {
+                "code": "US ",
+                "codeSystem": "ISO 3166-1 alpha-2",
+                "value": "USA",
+                "type": "CNT"
+            }
+        ]
+    },
+    "sexCode": null,
+    "statusDate": null,
+    "raceCode": null,
+    "birthDate": null
+}
