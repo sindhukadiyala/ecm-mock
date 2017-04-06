@@ -37,9 +37,22 @@
         <maven.compiler.source>1.6</maven.compiler.source>
     </properties>
 
+    <distributionManagement>
+        <repository>
+            <id>releases</id>
+            <name>CBIIT Nexus Releases</name>
+            <url>https://s3.amazonaws.com/ctrp-repos-inttest/public</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>CBIIT Nexus Snapshots</name>
+            <url>https://s3.amazonaws.com/ctrp-repos-inttest/public</url>
+        </snapshotRepository>
+    </distributionManagement>
+
     <repositories>
         <repository>
-            <id>central</id>
+            <id> maven central</id>
             <url>http://repo1.maven.org/maven2</url>
             <snapshots>
                 <enabled>true</enabled>
@@ -61,7 +74,7 @@
     </repositories>
     <pluginRepositories>
         <pluginRepository>
-            <id>repo.ctrp</id>
+            <id>repo.ctrp.s3</id>
             <url>https://s3.amazonaws.com/ctrp-repos-inttest/public</url>
         </pluginRepository>
     </pluginRepositories>
