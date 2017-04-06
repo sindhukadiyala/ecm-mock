@@ -36,17 +36,9 @@ COPY . /usr/src/app
 WORKDIR /usr/src/app
 RUN mvn clean package
 
-RUN mkdir -p /opt/jboss/mock_data
-RUN mkdir -p /opt/jboss/mock_data/org/
-RUN mkdir -p /opt/jboss/mock_data/hcf/
-RUN mkdir -p /opt/jboss/mock_data/resorg/
-RUN mkdir -p /opt/jboss/mock_data/crs/
-RUN mkdir -p /opt/jboss/mock_data/hcp-player/
-RUN mkdir -p /opt/jboss/mock_data/hcp-role/
-RUN mkdir -p /opt/jboss/mock_data/idp/
-
 COPY ./server-config/standalone.xml "$JBOSS_HOME/standalone/configuration/"
 
+COPY .ear-module/target/ecm-mock.ear "$JBOSS_HOME/standalone/deployments/"
 EXPOSE 39680
 
 CMD $JBOSS_HOME/bin/standalone.sh
