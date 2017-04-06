@@ -44,4 +44,28 @@
 		</property>
 	</bean>
 
+	<!-- JMS REST Service Configurations -->
+	<jaxrs:server id="jmsRESTService" address="/jms-service">
+		<jaxrs:serviceBeans>
+			<ref bean="jmsServiceSimpleRestEndpoint" />
+		</jaxrs:serviceBeans>
+		<jaxrs:providers>
+			<ref bean='jsonProvider' />
+		</jaxrs:providers>
+	</jaxrs:server>
+
+	<!-- Exception Handler for jmsServiceImpl-->
+	<bean id="jmsServiceProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="proxyInterfaces"
+				  value="gov.nih.nci.ecm.mock.rest.service.JMSService" />
+		<property name="interceptorNames">
+			<list>
+				<value>exceptionAdvice</value>
+			</list>
+		</property>
+		<property name="target">
+			<ref bean="simpleJMSService" />
+		</property>
+	</bean>
+
 </beans>
