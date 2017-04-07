@@ -14,6 +14,7 @@ import org.apache.commons.io.IOUtils;
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
 import java.io.FileInputStream;
+import java.io.InputStream;
 import java.util.List;
 
 /**
@@ -26,20 +27,23 @@ public class OrganizationServiceBean implements OrganizationService {
     JsonMapper mapper = new JsonMapper();
 
     String dataDir = System.getProperty("ECM_MOCK_DATA_DIR");
-//    String dataDir = "/Users/vinodh/sb/projects/ctrp-modern/ejb-remote/data";
 
     @Override
     public OrganizationDTO getOrganizationById(Ii ii) throws CTEPEntException {
         String id = ii.getExtension();
         String json = null;
+        InputStream is = null;
         try {
-            json =IOUtils.toString(new FileInputStream(dataDir + "/org/" + id + ".json"));
+            is = new FileInputStream(dataDir + "/org/" + id + ".json");
+            json =IOUtils.toString(is);
             OrganizationDTO dto = mapper.convertToObject(json, OrganizationDTO.class);
             EnOn name = dto.getName().clone();
             dto.setName(name);
             return dto;
         } catch (Exception e) {
             throw new CTEPEntException(1, e.getMessage());
+        } finally {
+            IOUtils.closeQuietly(is);
         }
     }
 

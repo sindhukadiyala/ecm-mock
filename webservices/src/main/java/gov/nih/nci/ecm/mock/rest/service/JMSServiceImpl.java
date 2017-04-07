@@ -1,6 +1,11 @@
 package gov.nih.nci.ecm.mock.rest.service;
 
+import java.io.FileInputStream;
+import java.io.FileReader;
+import java.io.InputStream;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 import javax.jms.Connection;
@@ -16,6 +21,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
+import org.apache.commons.io.IOUtils;
 import org.springframework.stereotype.Service;
 
 /**
@@ -33,6 +39,8 @@ public class JMSServiceImpl implements JMSService {
     private static final String DEFAULT_PASSWORD = "";
     private static final String INITIAL_CONTEXT_FACTORY = "org.jboss.naming.remote.client.InitialContextFactory";
     private static final String PROVIDER_URL = "remote://localhost:31699";
+    
+    String dataDir = System.getProperty("ECM_MOCK_DATA_DIR");
 
     private ConnectionFactory getConnectionFactory(Context context) throws NamingException {
         // Perform the JNDI lookups
@@ -73,11 +81,13 @@ public class JMSServiceImpl implements JMSService {
     }
 
     @Override
-    public String createJMSMessage(List<String> ids) {
-        System.out.println(ids);
+    public Map<String, String> createJMSMessage(List<String> ids) {
         //TODO: construct jms message based on xmls for these ids and publish in JMS topic
         Context context = null;
         Connection connection = null;
+        
+        Map<String, String> results = new HashMap<String, String>();
+        
         try {
             context = getContext();
             ConnectionFactory connectionFactory = getConnectionFactory(context);
@@ -87,34 +97,48 @@ public class JMSServiceImpl implements JMSService {
             connection = connectionFactory.createConnection(System.getProperty("username", DEFAULT_USERNAME), System.getProperty("password", DEFAULT_PASSWORD));
             Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
             MessageProducer producer = session.createProducer(destination);
-            MessageConsumer consumer = session.createConsumer(destination);
+//            MessageConsumer consumer = session.createConsumer(destination);
             connection.start();
+            
+            for(String id : ids) {
+                InputStream is = null;
+                try {
+                    is = new FileInputStream(dataDir + "/jms/" + id + ".xml");
+                    String xml = IOUtils.toString(is);
+                    Message message = session.createTextMessage(xml);
+                    producer.send(message);
+                    results.put(id, "sent " + message.getJMSMessageID());
+                } catch (Exception e) {
+                    results.put(id, e.toString());
+                } finally {
+                    IOUtils.closeQuietly(is);
+                }
+            }
+//
+//            TextMessage message2 = (TextMessage) consumer.receive(5000);
+//            System.out.println("Received message with content " + message2.getText());
 
-            Message message = session.createTextMessage("Test Message!");
-            producer.send(message);
-
-            TextMessage message2 = (TextMessage) consumer.receive(5000);
-            System.out.println("Received message with content " + message2.getText());
-
-        } catch (NamingException ex) {
+        } catch (Exception ex) {
             ex.printStackTrace();
-            return "Error: " + ex.getMessage();
-        } catch (JMSException ex) {
-            ex.printStackTrace();
-            return "Error: " + ex.getMessage();
+            results.put("error", ex.toString());
         } finally {
-            try {
-                if (connection != null) {
+            if (connection != null) {
+                try {
                     connection.close();
+                } catch (Exception e) {
+                    // TODO: handle exception
                 }
+            }
 
-                if (context != null) {
+            if (context != null) {
+                try {
                     context.close();
+                } catch (Exception e) {
+                    // TODO: handle exception
                 }
-            } catch(Exception ex) {
-                ex.printStackTrace();
             }
         }
-        return "success";
+
+        return results;
     }
 }
