@@ -40,5 +40,6 @@ COPY ./server-config/standalone.xml "$JBOSS_HOME/standalone/configuration/"
 
 RUN cp  /usr/src/app/ear-module/target/ecm-mock.ear "$JBOSS_HOME/standalone/deployments/"
 EXPOSE 39680
+EXPOSE 31699
 
 CMD $JBOSS_HOME/bin/standalone.sh
