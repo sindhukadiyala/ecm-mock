@@ -26,6 +26,7 @@ Build and Deploy ecm-mock
 	hcp-player/
 	hcp-role/
 	idp/
+	jms/
 
 7. Respective mock json files can be copied over to these folders	
 8. Download Jboss 6 EAP from https://s3.amazonaws.com/ctrp-repos/Installs/jboss-eap-6.2.0.zip
@@ -43,3 +44,16 @@ Validate ECM Mock App is up
 1. Hit the following url to get the build info (TODO: Right now, hardcoded info to be replaced with build or env specific info),
 
 http://<server-host-name>:39680/ecm-webservices/services/build-service/build
+
+Enqueue Mock JMS Message
+------------------------
+
+POST a JSON array of IDs to following URL:
+
+http://<server-host-name>:39680/ecm-webservices/services/jms-service/createmsg
+
+curl -v -X POST --header "Content-Type:application/json" -T data.json http://<server-host-name>:39680/ecm-webservices/services/jms-service/createmsg
+
+Where the file "data.json" contains ["53057"]
+
+Will enqueue <ECM_MOCK_DATA_DIR>/jms/53057.xml as a JMS message.
