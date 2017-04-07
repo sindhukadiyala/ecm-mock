@@ -71,7 +71,18 @@
                 <enabled>true</enabled>
             </releases>
         </repository>
+        <repository>
+            <id>redhat</id>
+            <url>https://maven.repository.redhat.com/ga</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
     </repositories>
+    
     <pluginRepositories>
         <pluginRepository>
             <id>repo.ctrp.s3</id>

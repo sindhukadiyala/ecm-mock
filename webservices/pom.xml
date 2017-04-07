@@ -12,7 +12,7 @@
     <name>ECM Mock Service - WebServices</name>
 
 	<properties>
-		<cxf.version>2.7.8</cxf.version>
+		<cxf.version>3.1.10</cxf.version>
 		<spring.version>3.0.7.RELEASE</spring.version>
 
         <!--<deployedArtifact>${jboss.home}/standalone/deployments/po.ear</deployedArtifact>
@@ -23,8 +23,35 @@
         <jackson.version>1.9.13</jackson.version>
 	</properties>
 
-	<dependencies>
+    <dependencyManagement>
+        <dependencies>
+            <!-- Define the version of JBoss' Java EE 6 APIs we want to use -->
+            <!-- JBoss distributes a complete set of Java EE 6 APIs including
+               a Bill of Materials (BOM). A BOM specifies the versions of a "stack" (or
+               a collection) of artifacts. We use this here so that we always get the correct
+               versions of artifacts. Here we use the jboss-javaee-6.0 stack (you can
+               read this as the JBoss stack of the Java EE 6 APIs). You can actually
+               use this stack with any version of JBoss AS that implements Java EE 6, not
+               just JBoss AS 7! -->
+            <dependency>
+                <groupId>org.jboss.spec</groupId>
+                <artifactId>jboss-javaee-6.0</artifactId>
+                <version>${version.org.jboss.spec.jboss.javaee.6.0}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
 
+            <dependency>
+                <groupId>org.jboss.as</groupId>
+                <artifactId>jboss-as-ejb-client-bom</artifactId>
+                <version>${version.org.jboss.as.ejb.client.bom}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+	<dependencies>
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
@@ -92,11 +119,11 @@
 		</dependency>
 
 		<!-- Web Service runtime -->
+		<!-- 
 		<dependency>
 			<groupId>org.apache.cxf</groupId>
 			<artifactId>cxf-rt-frontend-jaxws</artifactId>
 			<version>${cxf.version}</version>
-			<scope>compile</scope>
             <exclusions>
                 <exclusion>
                     <groupId>org.apache.cxf</groupId>
@@ -108,32 +135,43 @@
 			<groupId>org.apache.cxf</groupId>
 			<artifactId>cxf-rt-transports-http</artifactId>
 			<version>${cxf.version}</version>
-			<scope>compile</scope>
 		</dependency>
 		<dependency>
 		    <groupId>org.apache.cxf</groupId>
 		    <artifactId>cxf-rt-frontend-jaxrs</artifactId>
 		    <version>${cxf.version}</version>
-            <scope>compile</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-ws-policy</artifactId>
+            <version>${cxf.version}</version>
+		</dependency>
+        -->
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-ws-policy</artifactId>
+            <version>2.6.6</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-bundle-jaxrs</artifactId>
+            <version>2.6.6</version>
+        </dependency>
 
         <dependency>
             <groupId>org.codehaus.jackson</groupId>
             <artifactId>jackson-jaxrs</artifactId>
             <version>${jackson.version}</version>
-            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.codehaus.jackson</groupId>
             <artifactId>jackson-mapper-asl</artifactId>
             <version>${jackson.version}</version>
-            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.codehaus.jackson</groupId>
             <artifactId>jackson-xc</artifactId>
             <version>${jackson.version}</version>
-            <scope>compile</scope>
         </dependency>
 
 		<!-- Spring framework -->
@@ -142,6 +180,13 @@
 			<artifactId>spring-web</artifactId> <!-- needed for cxf -->
 			<version>${spring.version}</version>
 		</dependency>
+
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId> <!-- needed for cxf -->
+            <version>${spring.version}</version>
+        </dependency>
+
 
         <dependency>
             <groupId>org.springframework</groupId>
@@ -155,6 +200,12 @@
 			<version>2.9.1</version>
 			<scope>provided</scope>
 		</dependency>
+
+        <dependency> <!-- Added to resolve client issue -->
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-impl</artifactId>
+            <version>2.2.6</version>
+        </dependency>
 
 
         <!-- JBOSS dependencies -->
@@ -179,7 +230,72 @@
             <scope>provided</scope>
         </dependency>
 
+        <!-- Remoting related dependencies-->
+        <!-- Import the transaction spec API, we use runtime scope because we aren't using any direct
+       reference to the spec API in our client code -->
+        <dependency>
+            <groupId>org.jboss.spec.javax.transaction</groupId>
+            <artifactId>jboss-transaction-api_1.1_spec</artifactId>
+            <scope>runtime</scope>
+        </dependency>
 
+        <!-- Import the EJB 3.1 API, we use runtime scope because we aren't using any direct
+         reference to EJB spec API in our client code -->
+        <dependency>
+            <groupId>org.jboss.spec.javax.ejb</groupId>
+            <artifactId>jboss-ejb-api_3.1_spec</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
+        <!-- We depend on the EJB remote business interfaces  of this application -->
+        <dependency>
+            <groupId>gov.nih.nci.ecm.mock</groupId>
+            <artifactId>ecm-mock-server</artifactId>
+            <type>ejb-client</type>
+            <version>${project.version}</version>
+        </dependency>
+
+        <!-- JBoss EJB client API jar. We use runtime scope because the EJB client API
+         isn't directly used in this example. We just need it in our runtime classpath -->
+        <dependency>
+            <groupId>org.jboss</groupId>
+            <artifactId>jboss-ejb-client</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
+        <!-- client communications with the server use XNIO -->
+        <dependency>
+            <groupId>org.jboss.xnio</groupId>
+            <artifactId>xnio-api</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jboss.xnio</groupId>
+            <artifactId>xnio-nio</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
+        <!-- The client needs JBoss remoting to access the server -->
+        <dependency>
+            <groupId>org.jboss.remoting3</groupId>
+            <artifactId>jboss-remoting</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
+        <!-- Remote EJB accesses can be secured -->
+        <dependency>
+            <groupId>org.jboss.sasl</groupId>
+            <artifactId>jboss-sasl</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
+        <!-- data serialization for invoking remote EJBs -->
+        <dependency>
+            <groupId>org.jboss.marshalling</groupId>
+            <artifactId>jboss-marshalling-river</artifactId>
+            <scope>runtime</scope>
+        </dependency>
 
     </dependencies>
 
@@ -241,5 +357,38 @@
 			</testResource>
 		</testResources>
 	</build>
-
+	
+    <repositories>
+        <repository>
+            <id> maven central</id>
+            <url>http://repo1.maven.org/maven2</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
+        <repository>
+            <id>aws-s3</id>
+            <url>https://s3.amazonaws.com/ctrp-repos-inttest/public</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
+        <repository>
+            <id>redhat</id>
+            <url>https://maven.repository.redhat.com/ga</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
+    </repositories>
+    
 </project>

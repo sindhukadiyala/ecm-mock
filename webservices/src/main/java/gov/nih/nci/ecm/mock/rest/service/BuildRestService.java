@@ -31,7 +31,6 @@ public class BuildRestService {
     @GET
     @Path("/build")
     @Produces({ APPLICATION_JSON })
-    @Consumes({ APPLICATION_JSON })
     public Response getBuildInfo() {
         return Response.ok(buildServiceImpl.getBuildInfo()).build();
     }

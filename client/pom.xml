@@ -50,69 +50,88 @@
 
    <dependencies>
 
-       <!-- Import the transaction spec API, we use runtime scope because we aren't using any direct
-        reference to the spec API in our client code -->
-      <dependency>
-         <groupId>org.jboss.spec.javax.transaction</groupId>
-         <artifactId>jboss-transaction-api_1.1_spec</artifactId>
-         <scope>runtime</scope>
-      </dependency>
-
-      <!-- Import the EJB 3.1 API, we use runtime scope because we aren't using any direct
-       reference to EJB spec API in our client code -->
-      <dependency>
-         <groupId>org.jboss.spec.javax.ejb</groupId>
-         <artifactId>jboss-ejb-api_3.1_spec</artifactId>
-         <scope>runtime</scope>
-      </dependency>
-
        <!-- We depend on the EJB remote business interfaces  of this application -->
        <dependency>
           <groupId>gov.nih.nci.ecm.mock</groupId>
           <artifactId>ecm-mock-server</artifactId>
           <type>ejb-client</type>
          <version>${project.version}</version>
+         <exclusions>
+         	<exclusion>
+         		<groupId>com.sun.xml.bind</groupId>
+         		<artifactId>jaxb-impl</artifactId>
+         	</exclusion>
+         </exclusions>
        </dependency>
 
-       <!-- JBoss EJB client API jar. We use runtime scope because the EJB client API
-        isn't directly used in this example. We just need it in our runtime classpath -->
-       <dependency>
-           <groupId>org.jboss</groupId>
-           <artifactId>jboss-ejb-client</artifactId>
-           <scope>runtime</scope>
-       </dependency>
-
-       <!-- client communications with the server use XNIO -->
-       <dependency>
-           <groupId>org.jboss.xnio</groupId>
-           <artifactId>xnio-api</artifactId>
-           <scope>runtime</scope>
-       </dependency>
-
-       <dependency>
-           <groupId>org.jboss.xnio</groupId>
-           <artifactId>xnio-nio</artifactId>
-           <scope>runtime</scope>
-       </dependency>
-
-      <!-- The client needs JBoss remoting to access the server -->
-       <dependency>
+        <dependency>
+            <groupId>org.jboss</groupId>
+            <artifactId>jboss-ejb-client</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss</groupId>
+            <artifactId>jboss-remote-naming</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.logging</groupId>
+            <artifactId>jboss-logging</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.marshalling</groupId>
+            <artifactId>jboss-marshalling</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.marshalling</groupId>
+            <artifactId>jboss-marshalling-river</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
             <groupId>org.jboss.remoting3</groupId>
             <artifactId>jboss-remoting</artifactId>
             <scope>runtime</scope>
         </dependency>
-
-        <!-- Remote EJB accesses can be secured -->
         <dependency>
             <groupId>org.jboss.sasl</groupId>
             <artifactId>jboss-sasl</artifactId>
             <scope>runtime</scope>
         </dependency>
-
-        <!-- data serialization for invoking remote EJBs -->
         <dependency>
-            <groupId>org.jboss.marshalling</groupId>
-            <artifactId>jboss-marshalling-river</artifactId>
+            <groupId>org.jboss.spec.javax.transaction</groupId>
+            <artifactId>jboss-transaction-api_1.1_spec</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.spec.javax.ejb</groupId>
+            <artifactId>jboss-ejb-api_3.1_spec</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.xnio</groupId>
+            <artifactId>xnio-api</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.xnio</groupId>
+            <artifactId>xnio-nio</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hornetq</groupId>
+            <artifactId>hornetq-core-client</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hornetq</groupId>
+            <artifactId>hornetq-jms-client</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hornetq</groupId>
+            <artifactId>hornetq-ra</artifactId>
             <scope>runtime</scope>
         </dependency>
 

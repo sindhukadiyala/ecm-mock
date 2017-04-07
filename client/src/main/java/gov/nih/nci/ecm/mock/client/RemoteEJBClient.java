@@ -134,7 +134,7 @@ public class RemoteEJBClient {
 
         // let's do the lookup
         return (OrganizationService) context.lookup(
-                "ejb:ecm-mock/" + MODULE_NM + "/OrganizationServiceBean!" + OrganizationService.class.getName()
+                "ejb:ecm-mock/" + MODULE_NM + "/OrganizationService!" + OrganizationService.class.getName()
         );
     }
 }

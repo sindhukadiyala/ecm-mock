@@ -72,6 +72,12 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
+            <groupId>gov.nih.nci.iso21090</groupId>
+            <artifactId>iso-datatypes-extensions</artifactId>
+            <version>${iso-datatypes.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
             <groupId>gov.nih.nci.coppa</groupId>
             <artifactId>coppa-commons</artifactId>
             <version>${coppa-commons.version}</version>

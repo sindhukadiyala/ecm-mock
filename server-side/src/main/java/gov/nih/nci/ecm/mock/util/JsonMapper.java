@@ -20,7 +20,7 @@ public class JsonMapper {
     public <T> T convertToObject(String json, Class<T> clazz) throws IOException {
         ObjectReader reader = mapper.reader(DeserializationFeature.READ_ENUMS_USING_TO_STRING);
         T dto = reader.forType(clazz).readValue(json);
-        System.out.println(dto);
+//        System.out.println(dto);
 
         return dto;
     }
