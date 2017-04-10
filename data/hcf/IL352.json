@@ -1,0 +1,103 @@
+{
+    "identifier": {
+        "item": [
+            {
+                "nullFlavor": null,
+                "displayable": true,
+                "extension": "104172",
+                "identifierName": "NCI health care facility identifier",
+                "reliability": "ISS",
+                "root": "2.16.840.1.113883.3.26.4.4.3",
+                "scope": "OBJ"
+            },
+            {
+                "nullFlavor": null,
+                "displayable": true,
+                "extension": "IL352",
+                "identifierName": "Cancer Therapy Evaluation Program Organization Identifier",
+                "reliability": "ISS",
+                "root": "2.16.840.1.113883.3.26.6.2",
+                "scope": "OBJ"
+            }
+        ]
+    },
+    "telecomAddress": {
+        "item": [
+            {
+                "nullFlavor": null,
+                "value": "tel:(800)-793-2262"
+            }
+        ]
+    },
+    "duplicateOf": null,
+    "status": {
+        "nullFlavor": null,
+        "code": "active",
+        "codeSystem": null,
+        "codeSystemName": null,
+        "codeSystemVersion": null,
+        "displayName": null,
+        "originalText": null
+    },
+    "postalAddress": {
+        "item": [
+            {
+                "nullFlavor": null,
+                "part": [
+                    {
+                        "code": null,
+                        "codeSystem": null,
+                        "value": "3105 Magory Drive",
+                        "type": "AL"
+                    },
+                    {
+                        "code": null,
+                        "codeSystem": null,
+                        "value": "Bloomington",
+                        "type": "CTY"
+                    },
+                    {
+                        "code": null,
+                        "codeSystem": null,
+                        "value": "61704",
+                        "type": "ZIP"
+                    },
+                    {
+                        "code": "IL ",
+                        "codeSystem": null,
+                        "value": "Illinois",
+                        "type": "STA"
+                    },
+                    {
+                        "code": "US ",
+                        "codeSystem": "ISO 3166-1 alpha-2",
+                        "value": "USA",
+                        "type": "CNT"
+                    }
+                ]
+            }
+        ]
+    },
+    "name": {
+        "nullFlavor": null,
+        "part": [
+            {
+                "code": null,
+                "codeSystem": null,
+                "codeSystemVersion": null,
+                "qualifier": null,
+                "type": null,
+                "value": "Illinois CancerCare-Bloomington"
+            }
+        ]
+    },
+    "playerIdentifier": {
+        "nullFlavor": null,
+        "displayable": true,
+        "extension": "104168",
+        "identifierName": "NCI organization entity identifier",
+        "reliability": "ISS",
+        "root": "2.16.840.1.113883.3.26.4.2",
+        "scope": "OBJ"
+    }
+}
