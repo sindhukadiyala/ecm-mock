@@ -1,0 +1,84 @@
+{
+    "telecomAddress": {
+        "item": [
+            {
+                "nullFlavor": null,
+                "value": "tel:(800)-411-1222"
+            }
+        ]
+    },
+    "statusDate": null,
+    "familyOrganizationRelationships": null,
+    "statusCode": {
+        "nullFlavor": null,
+        "code": "active",
+        "codeSystem": null,
+        "codeSystemName": null,
+        "codeSystemVersion": null,
+        "displayName": null,
+        "originalText": null
+    },
+    "identifier": {
+        "nullFlavor": null,
+        "displayable": true,
+        "extension": "NCICCR",
+        "identifierName": "Cancer Therapy Evaluation Program Organization Identifier",
+        "reliability": "ISS",
+        "root": "2.16.840.1.113883.3.26.6.2",
+        "scope": "OBJ"
+    },
+    "postalAddress": {
+        "nullFlavor": null,
+        "part": [
+            {
+                "code": null,
+                "codeSystem": null,
+                "value": "31 Center Drive",
+                "type": "AL"
+            },
+            {
+                "code": null,
+                "codeSystem": null,
+                "value": "Building 31 Room 3A11",
+                "type": "ADL"
+            },
+            {
+                "code": null,
+                "codeSystem": null,
+                "value": "Bethesda",
+                "type": "CTY"
+            },
+            {
+                "code": null,
+                "codeSystem": null,
+                "value": "20892",
+                "type": "ZIP"
+            },
+            {
+                "code": "MD ",
+                "codeSystem": null,
+                "value": "Maryland",
+                "type": "STA"
+            },
+            {
+                "code": "US ",
+                "codeSystem": "ISO 3166-1 alpha-2",
+                "value": "USA",
+                "type": "CNT"
+            }
+        ]
+    },
+    "name": {
+        "nullFlavor": null,
+        "part": [
+            {
+                "code": null,
+                "codeSystem": null,
+                "codeSystemVersion": null,
+                "qualifier": null,
+                "type": null,
+                "value": "NCI Center for Cancer Research"
+            }
+        ]
+    }
+}

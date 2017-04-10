@@ -1,0 +1,79 @@
+{
+    "telecomAddress": {
+        "item": []
+    },
+    "statusDate": null,
+    "familyOrganizationRelationships": null,
+    "statusCode": {
+        "nullFlavor": null,
+        "code": "active",
+        "codeSystem": null,
+        "codeSystemName": null,
+        "codeSystemVersion": null,
+        "displayName": null,
+        "originalText": null
+    },
+    "identifier": {
+        "nullFlavor": null,
+        "displayable": true,
+        "extension": "DCP",
+        "identifierName": "Cancer Therapy Evaluation Program Organization Identifier",
+        "reliability": "ISS",
+        "root": "2.16.840.1.113883.3.26.6.2",
+        "scope": "OBJ"
+    },
+    "postalAddress": {
+        "nullFlavor": null,
+        "part": [
+            {
+                "code": null,
+                "codeSystem": null,
+                "value": "NCI Shady Grove",
+                "type": "ADL"
+            },
+            {
+                "code": null,
+                "codeSystem": null,
+                "value": "9609 Medical Center Drive",
+                "type": "AL"
+            },
+            {
+                "code": null,
+                "codeSystem": null,
+                "value": "Rockville",
+                "type": "CTY"
+            },
+            {
+                "code": null,
+                "codeSystem": null,
+                "value": "20850",
+                "type": "ZIP"
+            },
+            {
+                "code": "MD ",
+                "codeSystem": null,
+                "value": "Maryland",
+                "type": "STA"
+            },
+            {
+                "code": "US ",
+                "codeSystem": "ISO 3166-1 alpha-2",
+                "value": "USA",
+                "type": "CNT"
+            }
+        ]
+    },
+    "name": {
+        "nullFlavor": null,
+        "part": [
+            {
+                "code": null,
+                "codeSystem": null,
+                "codeSystemVersion": null,
+                "qualifier": null,
+                "type": null,
+                "value": "NCI Division of Cancer Prevention"
+            }
+        ]
+    }
+}
