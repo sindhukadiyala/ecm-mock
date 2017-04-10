@@ -357,38 +357,5 @@
 			</testResource>
 		</testResources>
 	</build>
-	
-    <repositories>
-        <repository>
-            <id> maven central</id>
-            <url>http://repo1.maven.org/maven2</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-        </repository>
-        <repository>
-            <id>aws-s3</id>
-            <url>https://s3.amazonaws.com/ctrp-repos-inttest/public</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-        </repository>
-        <repository>
-            <id>redhat</id>
-            <url>https://maven.repository.redhat.com/ga</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-        </repository>
-    </repositories>
-    
+
 </project>
