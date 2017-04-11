@@ -1,0 +1,116 @@
+{
+    "identifier": {
+        "item": [
+            {
+                "nullFlavor": null,
+                "displayable": true,
+                "extension": "36222752",
+                "identifierName": "NCI Research Organization identifier",
+                "reliability": "ISS",
+                "root": "2.16.840.1.113883.3.26.4.4.5",
+                "scope": "OBJ"
+            },
+            {
+                "nullFlavor": null,
+                "displayable": true,
+                "extension": "OBMLLC",
+                "identifierName": "Cancer Therapy Evaluation Program Organization Identifier",
+                "reliability": "ISS",
+                "root": "2.16.840.1.113883.3.26.6.2",
+                "scope": "OBJ"
+            }
+        ]
+    },
+    "telecomAddress": {
+        "item": [
+            {
+                "nullFlavor": null,
+                "value": "tel:(225)-755-3070"
+            }
+        ]
+    },
+    "duplicateOf": null,
+    "status": {
+        "nullFlavor": null,
+        "code": "active",
+        "codeSystem": null,
+        "codeSystemName": null,
+        "codeSystemVersion": null,
+        "displayName": null,
+        "originalText": null
+    },
+    "typeCode": {
+        "nullFlavor": null,
+        "code": "DCY",
+        "codeSystem": null,
+        "codeSystemName": null,
+        "codeSystemVersion": null,
+        "displayName": {
+            "nullFlavor": null,
+            "value": "Drug Company"
+        },
+        "originalText": null
+    },
+    "fundingMechanism": null,
+    "postalAddress": {
+        "item": [
+            {
+                "nullFlavor": null,
+                "part": [
+                    {
+                        "code": null,
+                        "codeSystem": null,
+                        "value": "17050 Medical Center Drive",
+                        "type": "AL"
+                    },
+                    {
+                        "code": null,
+                        "codeSystem": null,
+                        "value": "Baton Rouge",
+                        "type": "CTY"
+                    },
+                    {
+                        "code": null,
+                        "codeSystem": null,
+                        "value": "70816",
+                        "type": "ZIP"
+                    },
+                    {
+                        "code": "LA ",
+                        "codeSystem": null,
+                        "value": "Louisiana",
+                        "type": "STA"
+                    },
+                    {
+                        "code": "US ",
+                        "codeSystem": "ISO 3166-1 alpha-2",
+                        "value": "USA",
+                        "type": "CNT"
+                    }
+                ]
+            }
+        ]
+    },
+    "name": {
+        "nullFlavor": null,
+        "part": [
+            {
+                "code": null,
+                "codeSystem": null,
+                "codeSystemVersion": null,
+                "qualifier": null,
+                "type": null,
+                "value": "OncBioMune LLC"
+            }
+        ]
+    },
+    "playerIdentifier": {
+        "nullFlavor": null,
+        "displayable": true,
+        "extension": "38707776",
+        "identifierName": "NCI organization entity identifier",
+        "reliability": "ISS",
+        "root": "2.16.840.1.113883.3.26.4.2",
+        "scope": "OBJ"
+    }
+}
