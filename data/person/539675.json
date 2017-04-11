@@ -91,7 +91,7 @@
                 "type": "ZIP"
             },
             {
-                "code": "MD ",
+                "code": "MD",
                 "codeSystem": null,
                 "value": "Maryland",
                 "type": "STA"
