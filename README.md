@@ -47,12 +47,10 @@ Validate ECM Mock App is up
 Enqueue Mock JMS Message
 ------------------------
 
-POST a JSON array of IDs to following URL:
+Make a GET call to the following URL:
 
-http://&lt;server-host-name&gt;:39680/ecm-webservices/services/jms-service/createmsg
+http://&lt;server-host-name&gt;:39680/ecm-webservices/services/jms-service/createmsgs?id=&lt;id&gt;&amp;id=&lt;id&gt;
 
-`curl -v -X POST --header "Content-Type:application/json" -T data.json http://<server-host-name>:39680/ecm-webservices/services/jms-service/createmsg`
+`curl -v http://ctrp-ecmmock-inttest-elb-142612445.us-east-1.elb.amazonaws.com:39680/ecm-webservices/services/jms-service/createmsgs?id=14352&id=509983`
 
-Where the file "data.json" contains `["53057"]`
-
-Will enqueue &lt;ECM_MOCK_DATA_DIR&gt;/jms/53057.xml as a JMS message.
+Will enqueue &lt;ECM_MOCK_DATA_DIR&gt;/jms/14352.xml and 509983.xml as JMS messages.
