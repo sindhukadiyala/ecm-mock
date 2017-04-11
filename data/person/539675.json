@@ -91,9 +91,9 @@
                 "type": "ZIP"
             },
             {
-                "code": "PA ",
+                "code": "MD ",
                 "codeSystem": null,
-                "value": "Pennsylvania",
+                "value": "Maryland",
                 "type": "STA"
             },
             {
