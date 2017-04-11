@@ -1,0 +1,109 @@
+{
+    "name": {
+        "nullFlavor": null,
+        "part": [
+            {
+                "code": null,
+                "codeSystem": null,
+                "codeSystemVersion": null,
+                "qualifier": null,
+                "type": "FAM",
+                "value": "Barnett"
+            },
+            {
+                "code": null,
+                "codeSystem": null,
+                "codeSystemVersion": null,
+                "qualifier": null,
+                "type": "GIV",
+                "value": "Teresita"
+            },
+            {
+                "code": null,
+                "codeSystem": null,
+                "codeSystemVersion": null,
+                "qualifier": null,
+                "type": "GIV",
+                "value": "C."
+            },
+            {
+                "code": null,
+                "codeSystem": null,
+                "codeSystemVersion": null,
+                "qualifier": null,
+                "type": "PFX",
+                "value": "Dr."
+            }
+        ]
+    },
+    "telecomAddress": {
+        "item": [
+            {
+                "nullFlavor": null,
+                "value": "mailto:tcbmd@CTIS1hotmail.com"
+            },
+            {
+                "nullFlavor": null,
+                "value": "tel:(602)933-1337"
+            }
+        ]
+    },
+    "statusCode": {
+        "nullFlavor": null,
+        "code": "active",
+        "codeSystem": null,
+        "codeSystemName": null,
+        "codeSystemVersion": null,
+        "displayName": null,
+        "originalText": null
+    },
+    "ethnicGroupCode": null,
+    "identifier": {
+        "nullFlavor": null,
+        "displayable": true,
+        "extension": "7808",
+        "identifierName": "Cancer Therapy Evaluation Program Person Identifier",
+        "reliability": "ISS",
+        "root": "2.16.840.1.113883.3.26.6.1",
+        "scope": "OBJ"
+    },
+    "postalAddress": {
+        "nullFlavor": null,
+        "part": [
+            {
+                "code": null,
+                "codeSystem": null,
+                "value": "13200 N. 103RD AVE., #97",
+                "type": "AL"
+            },
+            {
+                "code": null,
+                "codeSystem": null,
+                "value": "Sun City",
+                "type": "CTY"
+            },
+            {
+                "code": null,
+                "codeSystem": null,
+                "value": "85351",
+                "type": "ZIP"
+            },
+            {
+                "code": "AZ ",
+                "codeSystem": null,
+                "value": "Arizona",
+                "type": "STA"
+            },
+            {
+                "code": "US ",
+                "codeSystem": "ISO 3166-1 alpha-2",
+                "value": "USA",
+                "type": "CNT"
+            }
+        ]
+    },
+    "sexCode": null,
+    "statusDate": null,
+    "raceCode": null,
+    "birthDate": null
+}
