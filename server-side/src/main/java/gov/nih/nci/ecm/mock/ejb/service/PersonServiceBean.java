@@ -1,9 +1,12 @@
 package gov.nih.nci.ecm.mock.ejb.service;
 
 import static java.lang.String.format;
-
 import gov.nih.nci.common.exceptions.CTEPEntException;
 import gov.nih.nci.coppa.services.PersonService;
+import gov.nih.nci.ecm.mock.dto.CTEPClincalResearchStaffDTO;
+import gov.nih.nci.ecm.mock.dto.CTEPHealthCareProviderDTO;
+import gov.nih.nci.ecm.mock.dto.CTEPPersonDTO;
+import gov.nih.nci.ecm.mock.util.DTOToDomainConverter;
 import gov.nih.nci.ecm.mock.util.JsonMapper;
 import gov.nih.nci.iso21090.EnPn;
 import gov.nih.nci.iso21090.Ii;
@@ -11,14 +14,16 @@ import gov.nih.nci.services.correlation.ClinicalResearchStaffDTO;
 import gov.nih.nci.services.correlation.HealthCareProviderDTO;
 import gov.nih.nci.services.correlation.IdentifiedPersonDTO;
 import gov.nih.nci.services.person.PersonDTO;
-import org.apache.commons.io.IOUtils;
-import org.apache.log4j.Logger;
 
-import javax.ejb.Remote;
-import javax.ejb.Stateless;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.List;
+
+import javax.ejb.Remote;
+import javax.ejb.Stateless;
+
+import org.apache.commons.io.IOUtils;
+import org.apache.log4j.Logger;
 
 /**
  * Created by vinodh on 4/5/17.
@@ -41,7 +46,10 @@ public class PersonServiceBean implements PersonService {
         try {
             is = new FileInputStream(dataDir + "/person/" + id + ".json");
             json = IOUtils.toString(is);
-            PersonDTO dto = mapper.convertToObject(json, PersonDTO.class);
+            
+            CTEPPersonDTO dto1 = DTOToDomainConverter.unmarshallJSON(json, CTEPPersonDTO.class);
+            PersonDTO dto = DTOToDomainConverter.convert(dto1);
+            
             EnPn name = dto.getName().clone();
             dto.setName(name);
             return dto;
@@ -66,7 +74,10 @@ public class PersonServiceBean implements PersonService {
         try {
             is = new FileInputStream(dataDir + "/crs/" + id + ".json");
             json = IOUtils.toString(is);
-            ClinicalResearchStaffDTO dto = mapper.convertToObject(json, ClinicalResearchStaffDTO.class);
+            
+            CTEPClincalResearchStaffDTO dto1 = DTOToDomainConverter.unmarshallJSON(json, CTEPClincalResearchStaffDTO.class);
+            ClinicalResearchStaffDTO dto = DTOToDomainConverter.convert(dto1);
+            
             return dto;
         } catch (Exception e) {
             LOG.warn(format("getClinicalResearchStaffByPlayerId failed for %s:", id), e);
@@ -84,7 +95,10 @@ public class PersonServiceBean implements PersonService {
         try {
             is = new FileInputStream(dataDir + "/hcp-player/" + id + ".json");
             json = IOUtils.toString(is);
-            HealthCareProviderDTO dto = mapper.convertToObject(json, HealthCareProviderDTO.class);
+           
+            CTEPHealthCareProviderDTO dto1 = DTOToDomainConverter.unmarshallJSON(json, CTEPHealthCareProviderDTO.class);
+            HealthCareProviderDTO dto = DTOToDomainConverter.convert(dto1);
+                    
             return dto;
         } catch (Exception e) {
             LOG.warn(format("getHealthCareProviderByPlayerId failed for %s:", id), e);
@@ -102,7 +116,10 @@ public class PersonServiceBean implements PersonService {
         try {
             is = new FileInputStream(dataDir + "/hcp-role/" + id + ".json");
             json = IOUtils.toString(is);
-            HealthCareProviderDTO dto = mapper.convertToObject(json, HealthCareProviderDTO.class);
+            
+            CTEPHealthCareProviderDTO dto1 = DTOToDomainConverter.unmarshallJSON(json, CTEPHealthCareProviderDTO.class);
+            HealthCareProviderDTO dto = DTOToDomainConverter.convert(dto1);
+            
             return dto;
         } catch (Exception e) {
             LOG.warn(format("getHealthCareProviderByRoleId failed for %s:", id), e);

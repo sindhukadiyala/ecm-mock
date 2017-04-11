@@ -3,6 +3,11 @@ package gov.nih.nci.ecm.mock.ejb.service;
 import gov.nih.nci.common.exceptions.CTEPEntException;
 import gov.nih.nci.coppa.domain.Organization;
 import gov.nih.nci.coppa.services.*;
+import gov.nih.nci.ecm.mock.dto.CTEPHealthcareFacilityDTO;
+import gov.nih.nci.ecm.mock.dto.CTEPOrganizationDTO;
+import gov.nih.nci.ecm.mock.dto.CTEPPersonDTO;
+import gov.nih.nci.ecm.mock.dto.CTEPResearchOrganizationDTO;
+import gov.nih.nci.ecm.mock.util.DTOToDomainConverter;
 import gov.nih.nci.ecm.mock.util.JsonMapper;
 import gov.nih.nci.iso21090.DSet;
 import gov.nih.nci.iso21090.EnOn;
@@ -10,6 +15,8 @@ import gov.nih.nci.iso21090.Ii;
 import gov.nih.nci.services.correlation.HealthCareFacilityDTO;
 import gov.nih.nci.services.correlation.ResearchOrganizationDTO;
 import gov.nih.nci.services.organization.OrganizationDTO;
+import gov.nih.nci.services.person.PersonDTO;
+
 import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
 
@@ -43,7 +50,10 @@ public class OrganizationServiceBean implements OrganizationService {
         try {
             is = new FileInputStream(dataDir + "/org/" + id + ".json");
             json = IOUtils.toString(is);
-            OrganizationDTO dto = mapper.convertToObject(json, OrganizationDTO.class);
+            
+            CTEPOrganizationDTO dto1 = DTOToDomainConverter.unmarshallJSON(json, CTEPOrganizationDTO.class);
+            OrganizationDTO dto = DTOToDomainConverter.convert(dto1);
+            
             EnOn name = dto.getName().clone();
             dto.setName(name);
             return dto;
@@ -73,7 +83,10 @@ public class OrganizationServiceBean implements OrganizationService {
         try {
             is = new FileInputStream(dataDir + "/hcf/" + id + ".json");
             json = IOUtils.toString(is);
-            HealthCareFacilityDTO dto = mapper.convertToObject(json, HealthCareFacilityDTO.class);
+            
+            CTEPHealthcareFacilityDTO dto1 = DTOToDomainConverter.unmarshallJSON(json, CTEPHealthcareFacilityDTO.class);
+            HealthCareFacilityDTO dto = DTOToDomainConverter.convert(dto1);
+            
             EnOn name = dto.getName().clone();
             dto.setName(name);
             DSet pa = dto.getPostalAddress().clone();
@@ -95,7 +108,10 @@ public class OrganizationServiceBean implements OrganizationService {
         try {
             is = new FileInputStream(dataDir + "/resorg/" + id + ".json");
             json = IOUtils.toString(is);
-            ResearchOrganizationDTO dto = mapper.convertToObject(json, ResearchOrganizationDTO.class);
+            
+            CTEPResearchOrganizationDTO dto1 = DTOToDomainConverter.unmarshallJSON(json, CTEPResearchOrganizationDTO.class);
+            ResearchOrganizationDTO dto = DTOToDomainConverter.convert(dto1);
+            
             EnOn name = dto.getName().clone();
             dto.setName(name);
             return dto;
