@@ -42,7 +42,7 @@ Validate ECM Mock App is up
 
 1. Hit the following url to get the build info (TODO: Right now, hardcoded info to be replaced with build or env specific info),
 
-`http://&lt;server-host-name&gt;:39680/ecm-webservices/services/build-service/build`
+`http://<server-host-name>:39680/ecm-webservices/services/build-service/build`
 
 Enqueue Mock JMS Message
 ------------------------
@@ -51,7 +51,7 @@ POST a JSON array of IDs to following URL:
 
 http://&lt;server-host-name&gt;:39680/ecm-webservices/services/jms-service/createmsg
 
-`curl -v -X POST --header "Content-Type:application/json" -T data.json http://&lt;server-host-name&gt;:39680/ecm-webservices/services/jms-service/createmsg`
+`curl -v -X POST --header "Content-Type:application/json" -T data.json http://<server-host-name>:39680/ecm-webservices/services/jms-service/createmsg`
 
 Where the file "data.json" contains `["53057"]`
 
