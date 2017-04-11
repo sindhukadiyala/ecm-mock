@@ -1,0 +1,11 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<ROWSET>
+   <ROW>
+      <TRANSACTION_TYPE>UPDATE</TRANSACTION_TYPE>
+      <RECORD_TYPE>PERSON</RECORD_TYPE>
+      <RECORD_ID>47603</RECORD_ID>
+      <PERSON_TYPE>HealthCareProvider</PERSON_TYPE>
+      <CTEP_ROLE_TYPE>IVR</CTEP_ROLE_TYPE>
+      <DUPLICATE_OF/>
+   </ROW>
+</ROWSET>
