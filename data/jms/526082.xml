@@ -1,0 +1,11 @@
+"<?xml version = '1.0' encoding = 'UTF-8'?>
+<ROWSET>
+   <ROW>
+      <TRANSACTION_TYPE>UPDATE</TRANSACTION_TYPE>
+      <RECORD_TYPE>PERSON</RECORD_TYPE>
+      <RECORD_ID>526082</RECORD_ID>
+      <PERSON_TYPE>ClinicalResearchStaff</PERSON_TYPE>
+      <CTEP_ROLE_TYPE>Associate</CTEP_ROLE_TYPE>
+      <DUPLICATE_OF/>
+   </ROW>
+</ROWSET>
