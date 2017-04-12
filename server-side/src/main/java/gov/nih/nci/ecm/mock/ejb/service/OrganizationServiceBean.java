@@ -5,17 +5,14 @@ import gov.nih.nci.coppa.domain.Organization;
 import gov.nih.nci.coppa.services.*;
 import gov.nih.nci.ecm.mock.dto.CTEPHealthcareFacilityDTO;
 import gov.nih.nci.ecm.mock.dto.CTEPOrganizationDTO;
-import gov.nih.nci.ecm.mock.dto.CTEPPersonDTO;
 import gov.nih.nci.ecm.mock.dto.CTEPResearchOrganizationDTO;
 import gov.nih.nci.ecm.mock.util.DTOToDomainConverter;
-import gov.nih.nci.ecm.mock.util.JsonMapper;
 import gov.nih.nci.iso21090.DSet;
 import gov.nih.nci.iso21090.EnOn;
 import gov.nih.nci.iso21090.Ii;
 import gov.nih.nci.services.correlation.HealthCareFacilityDTO;
 import gov.nih.nci.services.correlation.ResearchOrganizationDTO;
 import gov.nih.nci.services.organization.OrganizationDTO;
-import gov.nih.nci.services.person.PersonDTO;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
@@ -37,8 +34,6 @@ import java.util.List;
 public class OrganizationServiceBean implements OrganizationService {
 
     private static final Logger LOG = Logger.getLogger(PersonServiceBean.class);
-
-    JsonMapper mapper = new JsonMapper();
 
     String dataDir = System.getProperty("ECM_MOCK_DATA_DIR");
 

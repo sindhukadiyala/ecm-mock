@@ -1,5 +1,6 @@
 package gov.nih.nci.ecm.mock.util;
 
+import com.google.gson.Gson;
 import gov.nih.nci.ecm.mock.dto.CTEPClincalResearchStaffDTO;
 import gov.nih.nci.ecm.mock.dto.CTEPHealthCareProviderDTO;
 import gov.nih.nci.ecm.mock.dto.CTEPHealthcareFacilityDTO;
@@ -13,8 +14,6 @@ import gov.nih.nci.services.correlation.ResearchOrganizationDTO;
 import gov.nih.nci.services.organization.OrganizationDTO;
 import gov.nih.nci.services.person.PersonDTO;
 
-import org.codehaus.jackson.map.ObjectMapper;
-
 public class DTOToDomainConverter {
 	
 	  /**
@@ -26,12 +25,10 @@ public class DTOToDomainConverter {
      */
     public static <T> T unmarshallJSON(String jsonString, Class<T> objClass) {
         try {
-            ObjectMapper mapper = new ObjectMapper();
-            // JSON from String to Object
-             return (mapper.readValue(jsonString, objClass));
-
+            Gson gson = new Gson();
+            return gson.fromJson(jsonString, objClass);
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            e.printStackTrace();
             return null;
         }
     }

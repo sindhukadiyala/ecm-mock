@@ -7,7 +7,6 @@ import gov.nih.nci.ecm.mock.dto.CTEPClincalResearchStaffDTO;
 import gov.nih.nci.ecm.mock.dto.CTEPHealthCareProviderDTO;
 import gov.nih.nci.ecm.mock.dto.CTEPPersonDTO;
 import gov.nih.nci.ecm.mock.util.DTOToDomainConverter;
-import gov.nih.nci.ecm.mock.util.JsonMapper;
 import gov.nih.nci.iso21090.EnPn;
 import gov.nih.nci.iso21090.Ii;
 import gov.nih.nci.services.correlation.ClinicalResearchStaffDTO;
@@ -33,8 +32,6 @@ import org.apache.log4j.Logger;
 public class PersonServiceBean implements PersonService {
     
     private static final Logger LOG = Logger.getLogger(PersonServiceBean.class);
-
-    JsonMapper mapper = new JsonMapper();
 
     String dataDir = System.getProperty("ECM_MOCK_DATA_DIR");
 
@@ -74,7 +71,7 @@ public class PersonServiceBean implements PersonService {
         try {
             is = new FileInputStream(dataDir + "/crs/" + id + ".json");
             json = IOUtils.toString(is);
-            
+
             CTEPClincalResearchStaffDTO dto1 = DTOToDomainConverter.unmarshallJSON(json, CTEPClincalResearchStaffDTO.class);
             ClinicalResearchStaffDTO dto = DTOToDomainConverter.convert(dto1);
             
@@ -137,8 +134,7 @@ public class PersonServiceBean implements PersonService {
         try {
             is = new FileInputStream(dataDir + "/idp/" + id + ".json");
             json = IOUtils.toString(is);
-            IdentifiedPersonDTO dto = mapper.convertToObject(json, IdentifiedPersonDTO.class);
-            return dto;
+            return DTOToDomainConverter.unmarshallJSON(json, IdentifiedPersonDTO.class);
         } catch (Exception e) {
             LOG.warn(format("getIdentifiedPersonById failed for %s:", id), e);
             throw new CTEPEntException(1, e.getMessage());

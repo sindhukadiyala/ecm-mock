@@ -1,22 +1,17 @@
 package gov.nih.nci.ecm.mock.rest.service;
 
 import java.io.FileInputStream;
-import java.io.FileReader;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Properties;
 
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
 import javax.jms.Destination;
-import javax.jms.JMSException;
 import javax.jms.Message;
-import javax.jms.MessageConsumer;
 import javax.jms.MessageProducer;
 import javax.jms.Session;
-import javax.jms.TextMessage;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -53,22 +48,7 @@ public class JMSServiceImpl implements JMSService {
     }
 
     private Context getContext() throws NamingException {
-        // Set up the context for the JNDI lookup
-//        final Properties env = new Properties();
-//        env.put(Context.INITIAL_CONTEXT_FACTORY, INITIAL_CONTEXT_FACTORY);
-//        env.put(Context.PROVIDER_URL, System.getProperty(Context.PROVIDER_URL, PROVIDER_URL));
-        //env.put(Context.SECURITY_PRINCIPAL, System.getProperty("username", DEFAULT_USERNAME));
-        //env.put(Context.SECURITY_CREDENTIALS, System.getProperty("password", DEFAULT_PASSWORD));
-        // required for jboss
-//        env.put("jboss.naming.client.ejb.context", "true");
-        //return new InitialContext(env);
         return new InitialContext();
-
-        /*
-        final Hashtable jndiProperties = new Hashtable();
-        jndiProperties.put(Context.URL_PKG_PREFIXES, "org.jboss.ejb.client.naming");
-        final Context context = new InitialContext(jndiProperties);
-        return context;*/
     }
 
     private Destination getDestination(Context context) throws NamingException {
@@ -82,7 +62,6 @@ public class JMSServiceImpl implements JMSService {
 
     @Override
     public Map<String, String> createJMSMessage(List<String> ids) {
-        //TODO: construct jms message based on xmls for these ids and publish in JMS topic
         Context context = null;
         Connection connection = null;
         
@@ -94,10 +73,11 @@ public class JMSServiceImpl implements JMSService {
             Destination destination = getDestination(context);
 
             // Create the JMS connection, session, producer, and consumer
-            connection = connectionFactory.createConnection(System.getProperty("username", DEFAULT_USERNAME), System.getProperty("password", DEFAULT_PASSWORD));
+            connection = connectionFactory.createConnection(
+                    System.getProperty("username", DEFAULT_USERNAME),
+                    System.getProperty("password", DEFAULT_PASSWORD));
             Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
             MessageProducer producer = session.createProducer(destination);
-//            MessageConsumer consumer = session.createConsumer(destination);
             connection.start();
             
             for(String id : ids) {
@@ -114,9 +94,6 @@ public class JMSServiceImpl implements JMSService {
                     IOUtils.closeQuietly(is);
                 }
             }
-//
-//            TextMessage message2 = (TextMessage) consumer.receive(5000);
-//            System.out.println("Received message with content " + message2.getText());
 
         } catch (Exception ex) {
             ex.printStackTrace();
